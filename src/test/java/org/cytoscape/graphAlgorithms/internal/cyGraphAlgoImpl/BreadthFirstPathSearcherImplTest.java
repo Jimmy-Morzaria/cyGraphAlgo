@@ -12,7 +12,7 @@ import org.cytoscape.model.CyNode;
 import org.cytoscape.model.NetworkTestSupport;
 import org.junit.Test;
 
-public class BreadthFirstSearcherImplTest {
+public class BreadthFirstPathSearcherImplTest {
 
 		
 	private CyNetwork network;
@@ -44,7 +44,7 @@ public class BreadthFirstSearcherImplTest {
 		CyEdge edge9 = network.addEdge(node6, node7, true);
 		CyEdge edge10 = network.addEdge(node7, node8, true);
 		
-		Callback callback = new BfsCallback(node3);
+		Callback callback = new BfsCallback(node8);
 		
 		BreadthFirstPathSearcherImpl bfsearcher = new BreadthFirstPathSearcherImpl();
 		BfsStats bfsStats = bfsearcher.search(network, node3, false, callback);
