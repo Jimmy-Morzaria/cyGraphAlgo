@@ -78,7 +78,7 @@ public class DepthFirstPathSearcherImpl implements DepthFirstSearcher{
         	if(!marked[neighborIndex]){
         		
         		edgeTo[neighborIndex] = sourceIndex;
-        		callback.notify();
+        		//TODO include callback
         		dfs(network, node, callback);
         	}
         }
