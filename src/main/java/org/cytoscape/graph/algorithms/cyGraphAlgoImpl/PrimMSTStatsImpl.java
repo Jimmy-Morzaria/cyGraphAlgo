@@ -1,23 +1,24 @@
 /**
  * 
  */
-package org.cytoscape.graphAlgorithms.internal.cyGraphAlgoImpl;
+package org.cytoscape.graph.algorithms.cyGraphAlgoImpl;
 
 import java.util.Queue;
 
+import org.cytoscape.graph.algorithms.cyGraphAlgo.PrimMSTStats;
 import org.cytoscape.model.CyEdge;
 
 /**
  * @author Jimmy
  * 
  */
-public class PrimMSTStats {
+public class PrimMSTStatsImpl implements PrimMSTStats {
 
 	private double weight;
 
 	private Queue<CyEdge> mst;
 
-	public PrimMSTStats(Queue<CyEdge> mst, double weight) {
+	public PrimMSTStatsImpl(Queue<CyEdge> mst, double weight) {
 
 		this.mst = mst;
 		this.weight = weight;

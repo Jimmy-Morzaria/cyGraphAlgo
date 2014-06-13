@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.cytoscape.graphAlgorithms.internal.cyGraphAlgoImpl;
+package org.cytoscape.graph.algorithms.cyGraphAlgoImpl;
 
 import java.util.Comparator;
 import java.util.IdentityHashMap;
@@ -10,7 +10,8 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-import org.cytoscape.graphAlgorithms.internal.cyGraphAlgo.DijkstraShortestPathFinder;
+import org.cytoscape.graph.algorithms.cyGraphAlgo.DijkstraShortestPathFinder;
+import org.cytoscape.graph.algorithms.cyGraphAlgo.WeightFunction;
 import org.cytoscape.model.CyEdge;
 import org.cytoscape.model.CyNetwork;
 import org.cytoscape.model.CyNode;
@@ -19,12 +20,13 @@ import org.cytoscape.model.CyNode;
  * @author Jimmy
  * 
  */
-public class DijkstraShortestPathFinderImpl implements DijkstraShortestPathFinder{
+public class DijkstraShortestPathFinderImpl implements
+		DijkstraShortestPathFinder {
 
 	private Map<CyNode, MetaNode> nodeToMetaNodeMap;
 
-	public DijkstraStats findPath(CyNetwork network, CyNode source,
-			boolean directed, Map<CyEdge, Double> weightMap) {
+	public DijkstraStatsImpl findPath(CyNetwork network, CyNode source,
+			boolean directed, WeightFunction function) {
 
 		nodeToMetaNodeMap = new IdentityHashMap<CyNode, MetaNode>();
 
@@ -58,16 +60,16 @@ public class DijkstraShortestPathFinderImpl implements DijkstraShortestPathFinde
 				MetaNode neighborMetaNode = nodeToMetaNodeMap.get(edge
 						.getTarget());
 				if (neighborMetaNode.getDistance() > metaNode.getDistance()
-						+ weightMap.get(edge)) {
+						+ function.getWeight(edge)) {
 					neighborMetaNode.setDistance(metaNode.getDistance()
-							+ weightMap.get(edge));
+							+ function.getWeight(edge));
 					neighborMetaNode.setPredecessor(metaNode.getNode());
 					pq.add(neighborMetaNode);
 				}
 			}
 
 		}
-		return new DijkstraStats(source, nodeToMetaNodeMap);
+		return new DijkstraStatsImpl(source, nodeToMetaNodeMap);
 
 	}
 

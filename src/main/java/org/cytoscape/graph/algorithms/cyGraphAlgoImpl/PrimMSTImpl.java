@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.cytoscape.graphAlgorithms.internal.cyGraphAlgoImpl;
+package org.cytoscape.graph.algorithms.cyGraphAlgoImpl;
 
 import java.util.IdentityHashMap;
 import java.util.LinkedList;
@@ -9,6 +9,8 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
+import org.cytoscape.graph.algorithms.cyGraphAlgo.PrimMST;
+import org.cytoscape.graph.algorithms.cyGraphAlgo.WeightFunction;
 import org.cytoscape.model.CyEdge;
 import org.cytoscape.model.CyNetwork;
 import org.cytoscape.model.CyNode;
@@ -17,7 +19,7 @@ import org.cytoscape.model.CyNode;
  * @author Jimmy
  * 
  */
-public class PrimMSTImpl {
+public class PrimMSTImpl implements PrimMST{
 
 	private double weight;
 
@@ -29,12 +31,12 @@ public class PrimMSTImpl {
 
 	private Map<CyNode, Integer> nodeToIndexMap;
 
-	private Map<CyEdge, Double> weightMap;
+	private WeightFunction function;
+	
+	public PrimMSTStatsImpl findTree(CyNetwork network, WeightFunction function) {
 
-	public PrimMSTStats findTree(CyNetwork network, Map<CyEdge, Double> weightMap) {
-
-		this.weightMap = weightMap;
-
+		this.function = function;
+		
 		int nodeCount = network.getNodeCount();
 
 		int edgeCount = network.getEdgeCount();
@@ -87,7 +89,7 @@ public class PrimMSTImpl {
 			}
 		}
 		
-		return new PrimMSTStats(mst, weight);
+		return new PrimMSTStatsImpl(mst, weight);
 	}
 
 	private void scan(CyNetwork network, CyNode node, int nodeIndex) {
@@ -108,7 +110,7 @@ public class PrimMSTImpl {
 			int neighborIndex = nodeToIndexMap.get(neighbor);
 			if (!marked[neighborIndex]) {
 
-				pq.add(new MetaEdge(edge, weightMap.get(edge)));
+				pq.add(new MetaEdge(edge, function.getWeight(edge)));
 			}
 
 		}

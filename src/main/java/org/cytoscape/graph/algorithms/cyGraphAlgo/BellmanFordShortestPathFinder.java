@@ -1,12 +1,8 @@
 /**
  * 
  */
-package org.cytoscape.graphAlgorithms.internal.cyGraphAlgo;
+package org.cytoscape.graph.algorithms.cyGraphAlgo;
 
-import java.util.Map;
-
-import org.cytoscape.graphAlgorithms.internal.cyGraphAlgoImpl.BellmanFordStats;
-import org.cytoscape.model.CyEdge;
 import org.cytoscape.model.CyNetwork;
 import org.cytoscape.model.CyNode;
 
@@ -17,5 +13,5 @@ import org.cytoscape.model.CyNode;
 public interface BellmanFordShortestPathFinder {
 
 	public BellmanFordStats findPath(CyNetwork network, CyNode source, boolean directed,
-			Map<CyEdge, Double> weightMap);
+			WeightFunction function);
 }

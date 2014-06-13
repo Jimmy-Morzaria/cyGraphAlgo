@@ -1,12 +1,13 @@
 /**
  * 
  */
-package org.cytoscape.graphAlgorithms.internal.cyGraphAlgoImpl;
+package org.cytoscape.graph.algorithms.cyGraphAlgoImpl;
 
 import java.util.IdentityHashMap;
 import java.util.Map;
 
-import org.cytoscape.graphAlgorithms.internal.cyGraphAlgo.BellmanFordShortestPathFinder;
+import org.cytoscape.graph.algorithms.cyGraphAlgo.BellmanFordShortestPathFinder;
+import org.cytoscape.graph.algorithms.cyGraphAlgo.WeightFunction;
 import org.cytoscape.model.CyEdge;
 import org.cytoscape.model.CyNetwork;
 import org.cytoscape.model.CyNode;
@@ -15,14 +16,15 @@ import org.cytoscape.model.CyNode;
  * @author Jimmy
  * 
  */
-public class BellmanFordShortestPathFinderImpl implements BellmanFordShortestPathFinder{
+public class BellmanFordShortestPathFinderImpl implements
+		BellmanFordShortestPathFinder {
 
 	private Map<CyNode, MetaNode> nodeToMetaNodeMap;
 
 	private boolean negativeCycle = true;
 
-	public BellmanFordStats findPath(CyNetwork network, CyNode source, boolean directed,
-			Map<CyEdge, Double> weightMap) {
+	public BellmanFordStatsImpl findPath(CyNetwork network, CyNode source,
+			boolean directed, WeightFunction function) {
 
 		nodeToMetaNodeMap = new IdentityHashMap<CyNode, MetaNode>();
 
@@ -46,9 +48,9 @@ public class BellmanFordShortestPathFinderImpl implements BellmanFordShortestPat
 						.getTarget());
 
 				if (targetMetaNode.getDistance() > sourceMetaNode.getDistance()
-						+ weightMap.get(edge)) {
+						+ function.getWeight(edge)) {
 					targetMetaNode.setDistance(sourceMetaNode.getDistance()
-							+ weightMap.get(edge));
+							+ function.getWeight(edge));
 					targetMetaNode.setPredecessor(sourceMetaNode.getNode());
 				}
 			}
@@ -59,10 +61,11 @@ public class BellmanFordShortestPathFinderImpl implements BellmanFordShortestPat
 			MetaNode sourceMetaNode = nodeToMetaNodeMap.get(edge.getSource());
 			MetaNode targetMetaNode = nodeToMetaNodeMap.get(edge.getTarget());
 			if (targetMetaNode.getDistance() > sourceMetaNode.getDistance()
-					+ weightMap.get(edge))
+					+ function.getWeight(edge))
 				negativeCycle = false;
 		}
-		
-		return new BellmanFordStats(source, nodeToMetaNodeMap, this.negativeCycle);
+
+		return new BellmanFordStatsImpl(source, nodeToMetaNodeMap,
+				this.negativeCycle);
 	}
 }

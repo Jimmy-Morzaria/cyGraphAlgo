@@ -1,23 +1,24 @@
 /**
  * 
  */
-package org.cytoscape.graphAlgorithms.internal.cyGraphAlgoImpl;
+package org.cytoscape.graph.algorithms.cyGraphAlgoImpl;
 
 import java.util.Queue;
 
+import org.cytoscape.graph.algorithms.cyGraphAlgo.KruskalMSTStats;
 import org.cytoscape.model.CyEdge;
 
 /**
  * @author Jimmy
  *
  */
-public class KruskalMSTStats {
+public class KruskalMSTStatsImpl implements KruskalMSTStats{
 
 	private Queue<CyEdge> mst;
 	
 	private double weight;
 	
-	public KruskalMSTStats(Queue<CyEdge> mst, double weight){
+	public KruskalMSTStatsImpl(Queue<CyEdge> mst, double weight){
 		
 		this.mst = mst;
 		this.weight = weight;

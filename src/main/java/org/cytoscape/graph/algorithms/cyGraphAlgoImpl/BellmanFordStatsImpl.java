@@ -1,38 +1,49 @@
 /**
  * 
  */
-package org.cytoscape.graphAlgorithms.internal.cyGraphAlgoImpl;
+package org.cytoscape.graph.algorithms.cyGraphAlgoImpl;
 
 import java.util.Map;
 import java.util.Stack;
 
+import org.cytoscape.graph.algorithms.cyGraphAlgo.BellmanFordStats;
 import org.cytoscape.model.CyNode;
 
 /**
  * @author Jimmy
  * 
  */
-public class DijkstraStats {
+public class BellmanFordStatsImpl implements BellmanFordStats{
 
 	private Map<CyNode, MetaNode> nodeToMetaNodeMap;
 
 	private CyNode source;
 
-	public DijkstraStats(CyNode source, Map<CyNode, MetaNode> nodeToMetaNodeMap) {
+	private boolean negativeCycle;
 
-		this.nodeToMetaNodeMap = nodeToMetaNodeMap;
+	public BellmanFordStatsImpl(CyNode source,
+			Map<CyNode, MetaNode> nodeToMetaNodeMap, boolean negativeCycle) {
+
 		this.source = source;
+		this.nodeToMetaNodeMap = nodeToMetaNodeMap;
+		this.negativeCycle = negativeCycle;
 	}
 
-	public double getDistanceTo(CyNode target) {
+	public boolean hasNegativeCycle() {
 
-		return nodeToMetaNodeMap.get(target).getDistance();
+		return this.negativeCycle;
 
 	}
 
 	public CyNode getSource() {
 
 		return this.source;
+	}
+
+	public double getDistanceTo(CyNode target) {
+
+		return nodeToMetaNodeMap.get(target).getDistance();
+
 	}
 
 	public boolean hasPathTo(CyNode target) {
@@ -62,5 +73,4 @@ public class DijkstraStats {
 		return path;
 
 	}
-
 }

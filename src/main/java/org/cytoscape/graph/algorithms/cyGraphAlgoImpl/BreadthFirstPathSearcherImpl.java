@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.cytoscape.graphAlgorithms.internal.cyGraphAlgoImpl;
+package org.cytoscape.graph.algorithms.cyGraphAlgoImpl;
 
 import java.util.HashMap;
 import java.util.IdentityHashMap;
@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
-import org.cytoscape.graphAlgorithms.internal.cyGraphAlgo.Callback;
+import org.cytoscape.graph.algorithms.cyGraphAlgo.Callback;
 import org.cytoscape.model.CyEdge;
 import org.cytoscape.model.CyNetwork;
 import org.cytoscape.model.CyNode;
@@ -37,7 +37,7 @@ public class BreadthFirstPathSearcherImpl {
 	private boolean directed;
 
 	// breadth-first search from a single source
-	public BfsStats search(CyNetwork network, CyNode source, boolean directed,
+	public BfsStatsImpl search(CyNetwork network, CyNode source, boolean directed,
 			Callback callback) {
 
 		this.directed = directed;
@@ -91,7 +91,7 @@ public class BreadthFirstPathSearcherImpl {
 				}
 			}
 		}
-		return new BfsStats(source, network, marked, distTo, edgeTo,
+		return new BfsStatsImpl(source, network, marked, distTo, edgeTo,
 				nodeToIndexMap, indexToNodeMap);
 	}
 

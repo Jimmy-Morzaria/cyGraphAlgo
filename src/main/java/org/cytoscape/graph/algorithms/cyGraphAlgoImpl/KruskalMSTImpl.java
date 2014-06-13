@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.cytoscape.graphAlgorithms.internal.cyGraphAlgoImpl;
+package org.cytoscape.graph.algorithms.cyGraphAlgoImpl;
 
 import java.util.Comparator;
 import java.util.IdentityHashMap;
@@ -10,7 +10,8 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-import org.cytoscape.graphAlgorithms.internal.cyGraphAlgo.KruskalMST;
+import org.cytoscape.graph.algorithms.cyGraphAlgo.KruskalMST;
+import org.cytoscape.graph.algorithms.cyGraphAlgo.WeightFunction;
 import org.cytoscape.model.CyEdge;
 import org.cytoscape.model.CyNetwork;
 import org.cytoscape.model.CyNode;
@@ -32,7 +33,7 @@ public class KruskalMSTImpl implements KruskalMST{
 	private Queue<CyEdge> mst;
 
 	//adapted from Algorithms 4th Edition
-	public KruskalMSTStats findTree(CyNetwork network, Map<CyEdge, Double> weightMap) {
+	public KruskalMSTStatsImpl findTree(CyNetwork network, WeightFunction function) {
 
 		weight = 0;
 		pq = new PriorityQueue<MetaEdge>(network.getEdgeCount(), new CyEdgeComparator());
@@ -48,7 +49,7 @@ public class KruskalMSTImpl implements KruskalMST{
 		}
 		for (CyEdge edge : network.getEdgeList()) {
 
-			MetaEdge metaEdge = new MetaEdge(edge, weightMap.get(edge));
+			MetaEdge metaEdge = new MetaEdge(edge, function.getWeight(edge));
 			edgeToMetaEdgeMap.put(edge, metaEdge);
 			pq.add(metaEdge);
 		}
@@ -68,7 +69,7 @@ public class KruskalMSTImpl implements KruskalMST{
 			}
 		}
 		
-		return new KruskalMSTStats(mst, weight);
+		return new KruskalMSTStatsImpl(mst, weight);
 	}
 }
 

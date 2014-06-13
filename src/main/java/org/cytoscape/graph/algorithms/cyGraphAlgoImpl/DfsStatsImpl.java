@@ -1,11 +1,12 @@
 /**
  * 
  */
-package org.cytoscape.graphAlgorithms.internal.cyGraphAlgoImpl;
+package org.cytoscape.graph.algorithms.cyGraphAlgoImpl;
 
 import java.util.Map;
 import java.util.Stack;
 
+import org.cytoscape.graph.algorithms.cyGraphAlgo.DfsStats;
 import org.cytoscape.model.CyNetwork;
 import org.cytoscape.model.CyNode;
 
@@ -13,7 +14,7 @@ import org.cytoscape.model.CyNode;
  * @author Jimmy
  * 
  */
-public class DfsStats {
+public class DfsStatsImpl implements DfsStats{
 
 	private boolean marked[];
 
@@ -28,7 +29,7 @@ public class DfsStats {
 
 	private Map<Integer, CyNode> indexToNodeMap;
 
-	public DfsStats(CyNode source, CyNetwork network, boolean marked[],
+	public DfsStatsImpl(CyNode source, CyNetwork network, boolean marked[],
 			int edgeTo[], Map<CyNode, Integer> nodeToIndexMap,
 			Map<Integer, CyNode> indexToNodeMap) {
 
