@@ -12,6 +12,13 @@ import org.cytoscape.model.CyNode;
  */
 public interface BellmanFordShortestPathFinder {
 
+	/**
+	 * @param network
+	 * @param source
+	 * @param directed
+	 * @param function 
+	 * @return
+	 */
 	public BellmanFordStats findPath(CyNetwork network, CyNode source, boolean directed,
 			WeightFunction function);
 }

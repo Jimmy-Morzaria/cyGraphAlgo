@@ -25,14 +25,10 @@ public class PrimMSTStatsImpl implements PrimMSTStats {
 	}
 
 	public double getWeight() {
-
 		return this.weight;
-
 	}
 
 	public Iterable<CyEdge> getMST() {
-
 		return this.mst;
-
 	}
 }

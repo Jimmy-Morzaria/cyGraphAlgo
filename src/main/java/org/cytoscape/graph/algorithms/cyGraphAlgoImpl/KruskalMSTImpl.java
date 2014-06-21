@@ -17,6 +17,8 @@ import org.cytoscape.model.CyNetwork;
 import org.cytoscape.model.CyNode;
 
 /**
+ * Ref: Section 4.4 of Algorithms, 4th Edition by Robert Sedgewick and Kevin Wayne.
+ * 
  * @author Jimmy
  * 
  */
@@ -32,7 +34,6 @@ public class KruskalMSTImpl implements KruskalMST{
 
 	private Queue<CyEdge> mst;
 
-	//adapted from Algorithms 4th Edition
 	public KruskalMSTStatsImpl findTree(CyNetwork network, WeightFunction function) {
 
 		weight = 0;

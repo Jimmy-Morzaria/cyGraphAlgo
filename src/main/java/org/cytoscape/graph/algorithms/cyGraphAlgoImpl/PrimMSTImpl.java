@@ -16,6 +16,8 @@ import org.cytoscape.model.CyNetwork;
 import org.cytoscape.model.CyNode;
 
 /**
+ * Ref: Section 4.4 of Algorithms, 4th Edition by Robert Sedgewick and Kevin Wayne.
+ * 
  * @author Jimmy
  * 
  */
