@@ -10,8 +10,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.cytoscape.graph.algorithms.cyGraphAlgo.WeightFunction;
-import org.cytoscape.graph.algorithms.cyGraphAlgoImpl.KruskalMSTImpl;
-import org.cytoscape.graph.algorithms.cyGraphAlgoImpl.KruskalMSTStatsImpl;
+import org.cytoscape.graph.algorithms.impl.cyGraphAlgo.KruskalMSTImpl;
+import org.cytoscape.graph.algorithms.impl.cyGraphAlgo.KruskalMSTStatsImpl;
 import org.cytoscape.model.CyEdge;
 import org.cytoscape.model.CyNetwork;
 import org.cytoscape.model.CyNode;

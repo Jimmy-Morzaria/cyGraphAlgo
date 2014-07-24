@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 import org.cytoscape.graph.algorithms.cyGraphAlgo.BellmanFordShortestPathFinder;
 import org.cytoscape.graph.algorithms.cyGraphAlgo.BellmanFordStats;
 import org.cytoscape.graph.algorithms.cyGraphAlgo.WeightFunction;
-import org.cytoscape.graph.algorithms.cyGraphAlgoImpl.BellmanFordShortestPathFinderImpl;
+import org.cytoscape.graph.algorithms.impl.cyGraphAlgo.BellmanFordShortestPathFinderImpl;
 import org.cytoscape.model.CyEdge;
 import org.cytoscape.model.CyNetwork;
 import org.cytoscape.model.CyNode;

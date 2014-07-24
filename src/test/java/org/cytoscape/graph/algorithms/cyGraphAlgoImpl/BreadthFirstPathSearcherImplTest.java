@@ -6,9 +6,9 @@ import static org.junit.Assert.*;
 import java.util.Stack;
 
 import org.cytoscape.graph.algorithms.cyGraphAlgo.Callback;
-import org.cytoscape.graph.algorithms.cyGraphAlgoImpl.BfsCallback;
-import org.cytoscape.graph.algorithms.cyGraphAlgoImpl.BfsStatsImpl;
-import org.cytoscape.graph.algorithms.cyGraphAlgoImpl.BreadthFirstPathSearcherImpl;
+import org.cytoscape.graph.algorithms.impl.cyGraphAlgo.BfsCallback;
+import org.cytoscape.graph.algorithms.impl.cyGraphAlgo.BfsStatsImpl;
+import org.cytoscape.graph.algorithms.impl.cyGraphAlgo.BreadthFirstPathSearcherImpl;
 import org.cytoscape.model.CyEdge;
 import org.cytoscape.model.CyNetwork;
 import org.cytoscape.model.CyNode;

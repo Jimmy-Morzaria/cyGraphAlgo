@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 
 import org.cytoscape.graph.algorithms.cyGraphAlgo.Pagerank;
 import org.cytoscape.graph.algorithms.cyGraphAlgo.PagerankResults;
+import org.cytoscape.graph.algorithms.impl.cyGraphAlgo.PagerankImpl;
 import org.cytoscape.model.CyEdge;
 import org.cytoscape.model.CyNetwork;
 import org.cytoscape.model.CyNode;

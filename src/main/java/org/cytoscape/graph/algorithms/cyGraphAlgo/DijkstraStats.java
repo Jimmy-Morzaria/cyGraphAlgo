@@ -20,4 +20,6 @@ public interface DijkstraStats {
 	public CyNode getPredecessorTo(CyNode target);
 	
 	public Iterable<CyNode> getPathTo(CyNode target);
+	
+	public double getEccentricity();
 }

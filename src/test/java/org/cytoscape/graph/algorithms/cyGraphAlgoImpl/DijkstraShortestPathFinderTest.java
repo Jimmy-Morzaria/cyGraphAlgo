@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 import org.cytoscape.graph.algorithms.cyGraphAlgo.DijkstraShortestPathFinder;
 import org.cytoscape.graph.algorithms.cyGraphAlgo.DijkstraStats;
 import org.cytoscape.graph.algorithms.cyGraphAlgo.WeightFunction;
-import org.cytoscape.graph.algorithms.cyGraphAlgoImpl.DijkstraShortestPathFinderImpl;
+import org.cytoscape.graph.algorithms.impl.cyGraphAlgo.DijkstraShortestPathFinderImpl;
 import org.cytoscape.model.CyEdge;
 import org.cytoscape.model.CyNetwork;
 import org.cytoscape.model.CyNode;
@@ -21,7 +21,7 @@ import org.junit.Test;
  */
 public class DijkstraShortestPathFinderTest {
 
-	private CyNetwork network;
+	private CyNetwork network, network2;
 	
 	@Test
 	public void testFindPath(){
@@ -74,5 +74,40 @@ public class DijkstraShortestPathFinderTest {
 		assertEquals(5.0, dijkstraStats.getDistanceTo(node3),0.01);
 		assertEquals(0.0, dijkstraStats.getDistanceTo(node1),0.01);
 		
+		
+		network2 = networkTestSupport.getNetwork();
+		
+		CyNode node_1 = network2.addNode();
+		CyNode node_2 = network2.addNode();
+		CyNode node_3 = network2.addNode();
+		CyNode node_4 = network2.addNode();
+		CyNode node_5 = network2.addNode();
+		
+		CyEdge edge_1 = network2.addEdge(node_1, node_2, false);
+		CyEdge edge_2 = network2.addEdge(node_2, node_3, false);
+		CyEdge edge_3 = network2.addEdge(node_2, node_4, false);
+		CyEdge edge_4 = network2.addEdge(node_3, node_5, false);
+		CyEdge edge_5 = network2.addEdge(node_4, node_5, false);
+		
+		network2.getDefaultEdgeTable().createColumn("Weight", Double.class,
+				false);
+		network2.getRow(edge_1).set("Weight", 1.0);
+		network2.getRow(edge_2).set("Weight", 1.0);
+		network2.getRow(edge_3).set("Weight", 1.0);
+		network2.getRow(edge_4).set("Weight", 1.0);
+		network2.getRow(edge_5).set("Weight", 1.0);
+		
+		DijkstraShortestPathFinder dijkstraSPF1 = new DijkstraShortestPathFinderImpl();
+		DijkstraStats dijkstraStats1 = dijkstraSPF1.findPath(network2, node_2, false, new WeightFunction() {
+			public double getWeight(CyEdge edge) {
+				return network2.getRow(edge).get("Weight", Double.class);
+			}
+		});
+		
+		assertEquals(0.0, dijkstraStats1.getDistanceTo(node_2),0.01);
+		assertEquals(2.0, dijkstraStats1.getDistanceTo(node_5),0.01);
+		assertEquals(1.0, dijkstraStats1.getDistanceTo(node_4),0.01);
+		assertEquals(1.0, dijkstraStats1.getDistanceTo(node_3),0.01);
+		assertEquals(1.0, dijkstraStats1.getDistanceTo(node_1),0.01);
 	}
 }

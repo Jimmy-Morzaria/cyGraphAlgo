@@ -10,8 +10,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.cytoscape.graph.algorithms.cyGraphAlgo.WeightFunction;
-import org.cytoscape.graph.algorithms.cyGraphAlgoImpl.PrimMSTImpl;
-import org.cytoscape.graph.algorithms.cyGraphAlgoImpl.PrimMSTStatsImpl;
+import org.cytoscape.graph.algorithms.impl.cyGraphAlgo.PrimMSTImpl;
+import org.cytoscape.graph.algorithms.impl.cyGraphAlgo.PrimMSTStatsImpl;
 import org.cytoscape.model.CyEdge;
 import org.cytoscape.model.CyNetwork;
 import org.cytoscape.model.CyNode;
