@@ -4,6 +4,7 @@
 package org.cytoscape.graph.algorithms.impl.cyGraphAlgo;
 
 import java.util.IdentityHashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.cytoscape.graph.algorithms.cyGraphAlgo.FloydWarshallShortestPathFinder;
@@ -35,8 +36,10 @@ public class FloydWarshallShortestPathFinderImpl implements
 		Map<CyNode, Integer> nodeToIndexMap = new IdentityHashMap<CyNode, Integer>();
 
 		int i = 0;
-
-		for (CyNode node : network.getNodeList()) {
+		
+		List<CyNode> nodeList = network.getNodeList();
+		
+		for (CyNode node : nodeList) {
 			nodeToIndexMap.put(node, i++);
 		}
 
@@ -48,7 +51,7 @@ public class FloydWarshallShortestPathFinderImpl implements
 
 		}
 
-		for (CyNode node : network.getNodeList()) {
+		for (CyNode node : nodeList) {
 
 			int nodeIndex = nodeToIndexMap.get(node);
 			for (CyEdge edge : network.getAdjacentEdgeList(node,
@@ -67,17 +70,17 @@ public class FloydWarshallShortestPathFinderImpl implements
 			}
 		}
 
-		for (CyNode node : network.getNodeList()) {
+		for (CyNode node : nodeList) {
 
 			int nodeIndex = nodeToIndexMap.get(node);
 
-			for (CyNode node1 : network.getNodeList()) {
+			for (CyNode node1 : nodeList) {
 
 				int node1Index = nodeToIndexMap.get(node1);
 				if (edgeTo[node1Index][nodeIndex] == null)
 					continue;
 
-				for (CyNode node2 : network.getNodeList()) {
+				for (CyNode node2 : nodeList) {
 
 					int node2Index = nodeToIndexMap.get(node2);
 					if (distTo[node1Index][node2Index] > distTo[node1Index][nodeIndex]

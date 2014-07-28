@@ -3,7 +3,6 @@
  */
 package org.cytoscape.graph.algorithms.impl.cyGraphAlgo;
 
-import java.util.Comparator;
 import java.util.IdentityHashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -30,7 +29,7 @@ public class KruskalMSTImpl implements KruskalMST {
 
 		double weight = 0;
 		Queue<MetaEdge> pq = new PriorityQueue<MetaEdge>(
-				network.getEdgeCount(), new CyEdgeComparator());
+				network.getEdgeCount(), CyEdgeComparator.getInstance());
 
 		Map<CyEdge, MetaEdge> edgeToMetaEdgeMap = new IdentityHashMap<CyEdge, MetaEdge>();
 
@@ -160,17 +159,6 @@ class MetaEdge {
 
 		return weight;
 
-	}
-
-}
-
-class CyEdgeComparator implements Comparator<MetaEdge> {
-
-	@Override
-	public int compare(MetaEdge o1, MetaEdge o2) {
-		// TODO Auto-generated method stub
-		return o1.getWeight() > o2.getWeight() ? 1 : o1.getWeight() == o2
-				.getWeight() ? 0 : -1;
 	}
 
 }

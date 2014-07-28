@@ -33,7 +33,9 @@ public class PagerankImpl implements Pagerank {
 		Map<CyNode, Integer> nodeIndexMap = new IdentityHashMap<CyNode, Integer>();
 
 		int nodeIndex = 0;
-		for (CyNode node : network.getNodeList()) {
+		List<CyNode> nodeList = network.getNodeList();
+		
+		for (CyNode node : nodeList) {
 
 			nodeIndexMap.put(node, nodeIndex++);
 		}
@@ -48,7 +50,7 @@ public class PagerankImpl implements Pagerank {
 
 		// set initial values
 		nodeIndex = 0;
-		for (CyNode node : network.getNodeList()) {
+		for (CyNode node : nodeList) {
 
 			pageranks[nodeIndex] = 1.0f / nodeCount;
 			if (function != null) {
@@ -75,7 +77,7 @@ public class PagerankImpl implements Pagerank {
 		while (true) {
 
 			double r = 0.0;
-			for (CyNode node : network.getNodeList()) {
+			for (CyNode node : nodeList) {
 
 				int s_index = nodeIndexMap.get(node);
 				boolean out;
@@ -96,7 +98,7 @@ public class PagerankImpl implements Pagerank {
 
 			boolean completed = true;
 
-			for (CyNode node : network.getNodeList()) {
+			for (CyNode node : nodeList) {
 
 				int s_index = nodeIndexMap.get(node);
 				temp[s_index] = updateValueForNode(network, node, r, function, pageranks, nodeIndexMap, weights, directed, probability);

@@ -35,6 +35,8 @@ public class NetworkStatisticsImpl implements NetworkStatistics {
 		Map<CyNode, DijkstraStats> nodeDistanceMap = new IdentityHashMap<CyNode, DijkstraStats>();
 		DijkstraShortestPathFinder dPathFinder = new DijkstraShortestPathFinderImpl();
 
+		List<CyNode> nodeList = network.getNodeList();
+		
 		Map<CyNode, Double> eccentricityMap = new IdentityHashMap<CyNode, Double>();
 		Map<CyNode, Double> radialityMap = new IdentityHashMap<CyNode, Double>();
 		Map<CyNode, Double> closenessMap = new IdentityHashMap<CyNode, Double>();
@@ -45,7 +47,7 @@ public class NetworkStatisticsImpl implements NetworkStatistics {
 
 		double diameter = 0.0;
 		double eccentricity = 0.0;
-		for (CyNode tempNode : network.getNodeList()) {
+		for (CyNode tempNode : nodeList) {
 
 			DijkstraStats tempStats = dPathFinder.findPath(network, tempNode,
 					directed, function);
@@ -65,7 +67,7 @@ public class NetworkStatisticsImpl implements NetworkStatistics {
 		Closeness clo = new ClosenessImpl();
 		ClusteringCoefficient cCoefficient = new ClusteringCoefficientImpl();
 
-		for (CyNode tempNode : network.getNodeList()) {
+		for (CyNode tempNode : nodeList) {
 
 			closenessMap.put(tempNode,
 					clo.getCloseness(network, nodeDistanceMap.get(tempNode)));

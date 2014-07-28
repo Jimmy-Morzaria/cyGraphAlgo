@@ -5,6 +5,7 @@ package org.cytoscape.graph.algorithms.impl.cyGraphAlgo;
 
 import java.util.IdentityHashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -33,20 +34,22 @@ public class PrimMSTImpl implements PrimMST{
 
 		Queue<CyEdge> mst = new LinkedList<CyEdge>();
 
-		Queue<MetaEdge> pq = new PriorityQueue<MetaEdge>(edgeCount, new CyEdgeComparator());
+		Queue<MetaEdge> pq = new PriorityQueue<MetaEdge>(edgeCount, CyEdgeComparator.getInstance());
 
 		boolean marked[] = new boolean[nodeCount];
 
 		Map<CyNode, Integer> nodeToIndexMap = new IdentityHashMap<CyNode, Integer>();
 
 		int i = 0;
-		for (CyNode node : network.getNodeList()) {
+		List<CyNode> nodeList = network.getNodeList();
+		
+		for (CyNode node : nodeList) {
 
 			nodeToIndexMap.put(node, i);
 			i++;
 		}
 
-		for (CyNode node : network.getNodeList()) {
+		for (CyNode node : nodeList) {
 
 			int nodeIndex = nodeToIndexMap.get(node);
 

@@ -36,7 +36,10 @@ public class HITSImpl implements HITS {
 		Map<CyNode, Integer> nodeIndexMap = new IdentityHashMap<CyNode, Integer>();
 
 		int index = 0;
-		for (CyNode node : network.getNodeList()) {
+		
+		List<CyNode> nodeList = network.getNodeList();
+		
+		for (CyNode node : nodeList) {
 			nodeIndexMap.put(node, index);
 			index++;
 		}
@@ -55,8 +58,8 @@ public class HITSImpl implements HITS {
 
 			boolean completed = true;
 			updateAuthorityValue(network, tempAuthority, hubs, directed,
-					nodeIndexMap);
-			updateHubValue(network, tempHubs, authority, directed, nodeIndexMap);
+					nodeIndexMap, nodeList);
+			updateHubValue(network, tempHubs, authority, directed, nodeIndexMap, nodeList);
 
 			completed = checkDifference(authority, tempAuthority, epsilon)
 					&& checkDifference(hubs, tempHubs, epsilon);
@@ -72,22 +75,22 @@ public class HITSImpl implements HITS {
 
 	private void updateHubValue(CyNetwork network, double tempHubs[],
 			double authority[], boolean directed,
-			Map<CyNode, Integer> nodeIndexMap) {
+			Map<CyNode, Integer> nodeIndexMap, List<CyNode> nodeList) {
 
 		double norm = 0.0;
-		for (CyNode node : network.getNodeList()) {
+		for (CyNode node : nodeList) {
 
 			int nodeIndex = nodeIndexMap.get(node);
 
 			double hub = 0.0;
-			List<CyNode> nodeList;
+			List<CyNode> neighborList;
 			if (directed) {
-				nodeList = network.getNeighborList(node, CyEdge.Type.OUTGOING);
+				neighborList = network.getNeighborList(node, CyEdge.Type.OUTGOING);
 			} else {
-				nodeList = network.getNeighborList(node, CyEdge.Type.ANY);
+				neighborList = network.getNeighborList(node, CyEdge.Type.ANY);
 			}
 
-			for (CyNode neighbor : nodeList) {
+			for (CyNode neighbor : neighborList) {
 
 				hub += authority[nodeIndexMap.get(neighbor)];
 			}
@@ -107,20 +110,20 @@ public class HITSImpl implements HITS {
 
 	private void updateAuthorityValue(CyNetwork network,
 			double tempAuthority[], double hubs[], boolean directed,
-			Map<CyNode, Integer> nodeIndexMap) {
+			Map<CyNode, Integer> nodeIndexMap, List<CyNode> nodeList) {
 
 		double norm = 0.0;
-		for (CyNode node : network.getNodeList()) {
+		for (CyNode node : nodeList) {
 			int nodeIndex = nodeIndexMap.get(node);
 			double auth = 0.0;
-			List<CyNode> nodeList;
+			List<CyNode> neighborList;
 			if (directed) {
-				nodeList = network.getNeighborList(node, CyEdge.Type.INCOMING);
+				neighborList = network.getNeighborList(node, CyEdge.Type.INCOMING);
 			} else {
-				nodeList = network.getNeighborList(node, CyEdge.Type.ANY);
+				neighborList = network.getNeighborList(node, CyEdge.Type.ANY);
 			}
 
-			for (CyNode neighbor : nodeList) {
+			for (CyNode neighbor : neighborList) {
 				auth += hubs[nodeIndexMap.get(neighbor)];
 			}
 

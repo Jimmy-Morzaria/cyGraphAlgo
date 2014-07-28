@@ -31,7 +31,9 @@ public class BetweennessStressImpl implements BetweennessStress{
 		Map<CyEdge, Double> edgeBetweennessMap = new IdentityHashMap<CyEdge, Double>();
 		Map<CyNode, NodeMetaData> nodeToNodeMetaDataMap = new IdentityHashMap<CyNode, NodeMetaData>();
 
-		for (CyNode node : network.getNodeList()) {
+		List<CyNode> nodeList = network.getNodeList();
+		
+		for (CyNode node : nodeList) {
 			List<Double> list = new ArrayList<Double>();
 			list.add(0.0);
 			list.add(0.0);
@@ -41,10 +43,10 @@ public class BetweennessStressImpl implements BetweennessStress{
 
 		}
 
-		for (CyNode node : network.getNodeList()) {
+		for (CyNode node : nodeList) {
 
 			Map<CyEdge, Double> edgeDependencyMap = new IdentityHashMap<CyEdge, Double>();
-			for (CyNode node2 : network.getNodeList()) {
+			for (CyNode node2 : nodeList) {
 				nodeToNodeMetaDataMap.get(node2).resetAll();
 			}
 
@@ -168,7 +170,7 @@ public class BetweennessStressImpl implements BetweennessStress{
 			}
 		}
 		int n = network.getNodeCount();
-		for (CyNode node : network.getNodeList()) {
+		for (CyNode node : nodeList) {
 			List<Double> list = betweennessStressMap.get(node);
 			double temp = list.remove(0);
 			list.add(0, temp / ((n - 1) * (n - 2)));
