@@ -5,10 +5,10 @@ package org.cytoscape.graph.algorithms.cyGraphAlgoImpl;
 
 import static org.junit.Assert.*;
 
-import org.cytoscape.graph.algorithms.cyGraphAlgo.DijkstraShortestPathFinder;
-import org.cytoscape.graph.algorithms.cyGraphAlgo.DijkstraStats;
-import org.cytoscape.graph.algorithms.cyGraphAlgo.WeightFunction;
-import org.cytoscape.graph.algorithms.impl.cyGraphAlgo.DijkstraShortestPathFinderImpl;
+import org.cytoscape.graph.algorithms.api.DijkstraShortestPathFinder;
+import org.cytoscape.graph.algorithms.api.DijkstraStats;
+import org.cytoscape.graph.algorithms.api.WeightFunction;
+import org.cytoscape.graph.algorithms.impl.DijkstraShortestPathFinderImpl;
 import org.cytoscape.model.CyEdge;
 import org.cytoscape.model.CyNetwork;
 import org.cytoscape.model.CyNode;

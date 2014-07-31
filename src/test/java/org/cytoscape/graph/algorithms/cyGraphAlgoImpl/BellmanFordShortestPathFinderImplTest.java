@@ -5,10 +5,10 @@ package org.cytoscape.graph.algorithms.cyGraphAlgoImpl;
 
 import static org.junit.Assert.*;
 
-import org.cytoscape.graph.algorithms.cyGraphAlgo.BellmanFordShortestPathFinder;
-import org.cytoscape.graph.algorithms.cyGraphAlgo.BellmanFordStats;
-import org.cytoscape.graph.algorithms.cyGraphAlgo.WeightFunction;
-import org.cytoscape.graph.algorithms.impl.cyGraphAlgo.BellmanFordShortestPathFinderImpl;
+import org.cytoscape.graph.algorithms.api.BellmanFordShortestPathFinder;
+import org.cytoscape.graph.algorithms.api.BellmanFordStats;
+import org.cytoscape.graph.algorithms.api.WeightFunction;
+import org.cytoscape.graph.algorithms.impl.BellmanFordShortestPathFinderImpl;
 import org.cytoscape.model.CyEdge;
 import org.cytoscape.model.CyNetwork;
 import org.cytoscape.model.CyNode;

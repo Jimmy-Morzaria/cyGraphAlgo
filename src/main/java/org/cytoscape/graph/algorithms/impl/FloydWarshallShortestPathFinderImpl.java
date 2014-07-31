@@ -22,12 +22,12 @@ public class FloydWarshallShortestPathFinderImpl implements
 		FloydWarshallShortestPathFinder {
 
 	@Override
-	public FloydWarshallStats findPath(CyNetwork network, CyNode source,
-			boolean directed, WeightFunction function) {
+	public FloydWarshallStats findPath(CyNetwork network, boolean directed,
+			WeightFunction function) {
 		// TODO Auto-generated method stub
 
 		boolean negativeCycle = false;
-		
+
 		int nodeCount = network.getNodeCount();
 
 		double distTo[][] = new double[nodeCount][nodeCount];
@@ -36,9 +36,9 @@ public class FloydWarshallShortestPathFinderImpl implements
 		Map<CyNode, Integer> nodeToIndexMap = new IdentityHashMap<CyNode, Integer>();
 
 		int i = 0;
-		
+
 		List<CyNode> nodeList = network.getNodeList();
-		
+
 		for (CyNode node : nodeList) {
 			nodeToIndexMap.put(node, i++);
 		}
@@ -90,14 +90,15 @@ public class FloydWarshallShortestPathFinderImpl implements
 								+ distTo[nodeIndex][node2Index];
 						edgeTo[node1Index][node2Index] = edgeTo[nodeIndex][node2Index];
 					}
-					
-					if(distTo[node1Index][node1Index] < 0.0){
+
+					if (distTo[node1Index][node1Index] < 0.0) {
 						negativeCycle = true;
 					}
 				}
 			}
 		}
-		return new FloydWarshallStatsImpl(nodeToIndexMap, distTo, edgeTo, negativeCycle);
+		return new FloydWarshallStatsImpl(nodeToIndexMap, distTo, edgeTo,
+				negativeCycle);
 	}
 
 }

@@ -9,8 +9,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
-import java.util.Stack;
-
 import org.cytoscape.graph.centralities.api.BetweennessStress;
 import org.cytoscape.model.CyEdge;
 import org.cytoscape.model.CyIdentifiable;
@@ -50,7 +48,7 @@ public class BetweennessStressImpl implements BetweennessStress{
 				nodeToNodeMetaDataMap.get(node2).resetAll();
 			}
 
-			Stack<CyNode> nodeStack = new Stack<CyNode>();
+			LinkedList<CyNode> nodeStack = new LinkedList<CyNode>();
 			Queue<CyNode> nodeQueue = new LinkedList<CyNode>();
 			nodeQueue.add(node);
 			nodeToNodeMetaDataMap.get(node).setDistance(0.0);

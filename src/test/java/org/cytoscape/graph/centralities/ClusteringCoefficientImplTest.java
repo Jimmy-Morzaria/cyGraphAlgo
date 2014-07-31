@@ -5,8 +5,8 @@ package org.cytoscape.graph.centralities;
 
 import static org.junit.Assert.*;
 
-import org.cytoscape.graph.api.centralities.ClusteringCoefficient;
-import org.cytoscape.graph.impl.centralities.ClusteringCoefficientImpl;
+import org.cytoscape.graph.centralities.api.ClusteringCoefficient;
+import org.cytoscape.graph.centralities.impl.ClusteringCoefficientImpl;
 import org.cytoscape.model.CyEdge;
 import org.cytoscape.model.CyNetwork;
 import org.cytoscape.model.CyNode;

@@ -5,9 +5,9 @@ package org.cytoscape.graph.algorithms.cyGraphAlgoImpl;
 
 import static org.junit.Assert.*;
 
-import org.cytoscape.graph.algorithms.cyGraphAlgo.HITS;
-import org.cytoscape.graph.algorithms.cyGraphAlgo.HITSResults;
-import org.cytoscape.graph.algorithms.impl.cyGraphAlgo.HITSImpl;
+import org.cytoscape.graph.algorithms.api.HITS;
+import org.cytoscape.graph.algorithms.api.HITSResults;
+import org.cytoscape.graph.algorithms.impl.HITSImpl;
 import org.cytoscape.model.CyEdge;
 import org.cytoscape.model.CyNetwork;
 import org.cytoscape.model.CyNode;

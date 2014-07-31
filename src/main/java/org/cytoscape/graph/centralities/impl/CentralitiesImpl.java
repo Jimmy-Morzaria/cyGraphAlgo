@@ -11,8 +11,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
-import java.util.Stack;
-
 import org.cytoscape.graph.algorithms.api.DijkstraShortestPathFinder;
 import org.cytoscape.graph.algorithms.api.DijkstraStats;
 import org.cytoscape.graph.algorithms.api.WeightFunction;
@@ -116,7 +114,7 @@ public class CentralitiesImpl implements Centralities {
 				nodeToNodeMetaDataMap.get(node2).resetAll();
 			}
 
-			Stack<CyNode> nodeStack = new Stack<CyNode>();
+			LinkedList<CyNode> nodeStack = new LinkedList<CyNode>();
 			Queue<CyNode> nodeQueue = new LinkedList<CyNode>();
 			nodeQueue.add(node);
 			nodeToNodeMetaDataMap.get(node).setDistance(0.0);

@@ -5,8 +5,8 @@ package org.cytoscape.graph.centralities;
 
 import static org.junit.Assert.*;
 
-import org.cytoscape.graph.algorithms.cyGraphAlgo.WeightFunction;
-import org.cytoscape.graph.impl.centralities.ClosenessImpl;
+import org.cytoscape.graph.algorithms.api.WeightFunction;
+import org.cytoscape.graph.centralities.impl.ClosenessImpl;
 import org.cytoscape.model.CyEdge;
 import org.cytoscape.model.CyNetwork;
 import org.cytoscape.model.CyNode;

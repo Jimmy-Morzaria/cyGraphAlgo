@@ -5,10 +5,10 @@ import static org.junit.Assert.*;
 
 import java.util.Stack;
 
-import org.cytoscape.graph.algorithms.cyGraphAlgo.Callback;
-import org.cytoscape.graph.algorithms.impl.cyGraphAlgo.BfsCallback;
-import org.cytoscape.graph.algorithms.impl.cyGraphAlgo.BfsStatsImpl;
-import org.cytoscape.graph.algorithms.impl.cyGraphAlgo.BreadthFirstPathSearcherImpl;
+import org.cytoscape.graph.algorithms.api.Callback;
+import org.cytoscape.graph.algorithms.impl.BfsCallback;
+import org.cytoscape.graph.algorithms.impl.BfsStatsImpl;
+import org.cytoscape.graph.algorithms.impl.BreadthFirstPathSearcherImpl;
 import org.cytoscape.model.CyEdge;
 import org.cytoscape.model.CyNetwork;
 import org.cytoscape.model.CyNode;

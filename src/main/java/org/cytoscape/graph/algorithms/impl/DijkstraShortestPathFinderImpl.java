@@ -3,7 +3,6 @@
  */
 package org.cytoscape.graph.algorithms.impl;
 
-import java.util.Comparator;
 import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
@@ -72,30 +71,4 @@ public class DijkstraShortestPathFinderImpl implements
 		}
 		return new DijkstraStatsImpl(source, nodeToMetaNodeMap);
 	}
-}
-
-class DijkstraComparator implements Comparator<MetaNode> {
-
-	private static DijkstraComparator dComparator = null;
-
-	private DijkstraComparator() {
-
-	}
-
-	public static DijkstraComparator getInstance() {
-
-		if (dComparator == null) {
-			dComparator = new DijkstraComparator();
-		}
-
-		return dComparator;
-	}
-
-	@Override
-	public int compare(MetaNode o1, MetaNode o2) {
-		// TODO Auto-generated method stub
-		return o1.getDistance() > o2.getDistance() ? 1 : o1.getDistance() == o2
-				.getDistance() ? 0 : -1;
-	}
-
 }

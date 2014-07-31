@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.List;
 import java.util.Map;
 
-import org.cytoscape.graph.impl.centralities.BetweennessStressImpl;
+import org.cytoscape.graph.centralities.impl.BetweennessStressImpl;
 import org.cytoscape.model.CyEdge;
 import org.cytoscape.model.CyIdentifiable;
 import org.cytoscape.model.CyNetwork;
